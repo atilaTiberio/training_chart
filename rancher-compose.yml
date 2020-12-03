@@ -1,0 +1,11 @@
+version: "3"
+services:
+  app:
+    image: rancher/rancher:v2.3.0
+    privileged: true
+    ports:
+      - 8181:80
+      - 9191:443
+    volumes:
+      - ./rancher:/var/lib/rancher
+#https://github.com/rancher/charts
