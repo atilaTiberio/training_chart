@@ -1,0 +1,48 @@
+# Default values for ibconnect.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+baseDomain: qa-demandforced3.com
+release: dci
+namespace: ibconnect
+env: dev
+# local:p-ltc6b
+rancher:
+    clusterId: local
+    projectId: p-ltc6b
+gateway:
+    hosts:
+      - .192.168.99.108.xip.io
+
+ibconnect:
+    env:
+        NODE_ENV: development
+        ACCESS_CONTROL_ALLOW_ORIGIN: '*'
+        JBOSS_HOME: /app
+        KEYCLOAK_LOGLEVEL: INFO
+        POSTGRESQL_USER: ibconnect_appuser_user
+        POSTGRESQL_PASSWORD: penc1l5h@rpeneR
+        POSTGRESQL_DATABASE: platformsvcsdb
+        POSTGRESQL_HOST: dev-platformsvcspgdb1.internetbrands.com
+        POSTGRESQL_SCHEMA: ibconnect
+        HEALTH_CHECK_OIDC_ENDPOINT: http://dev-ibcv2.internetbrands.com/auth/realms/master/protocol/openid-connect/
+        HEALTH_CHECK_OIDC_CONFIG_URL: http://dev-ibcv2.internetbrands.com/auth/realms/master/.well-known/openid-configuration
+        HEALTH_CHECK_CLIENT_ID: health-check-client
+        HEALTH_CHECK_CLIENT_SECRET: 10e32081-1e87-4442-9544-a9e06ba87b2f
+        HEALTH_CHECK_USERNAME: health-check-user
+        HEALTH_CHECK_PASSWORD: Abc1234!
+        FED_API_TIMEOUT: 60000
+        OPENSRS_TOKEN_ENDPOINT: https://ci.slogin.smb.internetbrands.com/token
+        OPENSRS_UPDATE_ENDPOINT: https://ci.cp.smb.internetbrands.com/api/v0.1/user/changePasswordForced
+        OPENSRS_CLIENT: keycloak
+        OPENSRS_SECRET: secret
+        OPENSRS_SCOPE: openid email smbportalapi
+        text: hello world
+    app:
+      name: ibconnect
+      image: jmalloc/echo-server
+      tag: latest
+      replicas: 1
+      version: 1.0
+      targetPort: 8080
+      servicePort: 80
