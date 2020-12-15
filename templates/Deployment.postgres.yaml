@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment-dev
+  namespace: postgres-namespace-dev
+spec:
+  selector:
+    matchLabels:
+      app: postgres-deployment-dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres-deployment-dev
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: postgres-configmap
+            optional: false
+        image: postgres:9.6
+        imagePullPolicy: Always
+        name: postgres
+        ports:
+        - containerPort: 5432
+          name: psql
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: vol1
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: psql-volume-dev
