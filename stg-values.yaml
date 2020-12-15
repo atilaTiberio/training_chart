@@ -1,0 +1,12 @@
+
+rancher:
+  clusterId: c-j454z
+  projectId: p-6h468
+
+app:
+  name: postgres
+  release: staging
+  environment:
+    POSTGRES_USER: psql_user_stg
+    POSTGRES_PASSWORD: psql_pwd_stg
+    POSTGRES_DB: psqldb_stg

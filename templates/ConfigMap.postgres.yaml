@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgres-configmap
-  namespace: postgres-namespace-dev
+  name: {{.Values.app.name}}-configmap
+  namespace: {{.Values.app.name}}-namespace-{{.Values.app.release}}
 data:
-  POSTGRES_USER: psql_user
-  POSTGRES_PASSWORD: psql_pwd
-  POSTGRES_DB: psqldb
+  {{- range $key, $value := .Values.app.environment}}
+  {{ $key }}: {{ toYaml $value }}
+  {{- end }}

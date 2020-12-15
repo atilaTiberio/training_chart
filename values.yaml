@@ -1,0 +1,14 @@
+
+rancher:
+  clusterId: c-j454z
+  projectId: p-6h468
+
+app:
+  name: postgres
+  release: dev
+  image: postgres
+  tag: 9.6
+  environment:
+    POSTGRES_USER: psql_user_dev
+    POSTGRES_PASSWORD: psql_pwd_dev
+    POSTGRES_DB: psqldb_dev

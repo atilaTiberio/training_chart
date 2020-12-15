@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: postgres-deployment-dev
+        otra_label: otro_valor
     spec:
       containers:
       - envFrom:
